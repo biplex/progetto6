@@ -1,0 +1,42 @@
+//author: Simona Taranda
+
+//Verifica disponibilità di un posto auto nell'intero garage.
+
+bool verificaDisponibilitaGarage(){
+
+	int numLivelli = garage.getNumLivelli(); //scorre l'array dei livelli e mi ritorna il numero dei livelli totale.
+	int i = 1;
+	bool result = false;
+	
+	while((result != true ) || (i <= numLivelli ){
+	
+		result = Livelli[i].verificaDisponibilita();
+		i = i + 1;
+	
+	}
+	
+	return result;
+
+}
+
+// Calcolo totale da pagare per parcheggio ad ore.
+
+float calcoloPagamentoOre(int numPosto, int numOre){
+
+	float penale = garage.getPenale();
+	String tipo = garage.getTipo(); //scorre tutti i livelli e tutti i posti di ogni livello e mi ritorna il tipo di posto.
+	float tariffa = garage.getTariffaOre(tipo); //ritorna la tariffa in base al tipo di posto
+	float totale;
+	
+	totale = tariffa * ore;
+	if(numOre > 8){
+	
+		totale = totale + penale;
+	
+	}
+	
+	return totale;
+
+}
+
+
